@@ -18,7 +18,9 @@ const RootLayout = () => {
           backgroundColor: '#fff',
         }
       }}
-    />
+    >
+      <Stack.Screen name='index' options={{title: 'Home'}} />
+      </Stack>
   );
 };
 
