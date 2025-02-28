@@ -16,7 +16,7 @@ const RootLayout = () => {
           paddingHorizontal: 10,
           paddingTop: 10,
           backgroundColor: '#fff',
-        }
+        },
       }}
     >
       <Stack.Screen name='index' options={{title: 'Home'}} />
