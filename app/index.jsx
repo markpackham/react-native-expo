@@ -3,7 +3,7 @@ import PostItImage from "@/assets/images/post-it.png";
 import { useRouter } from "expo-router";
 
 const HomeScreen = () => {
-const router = useRouter();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
@@ -12,9 +12,11 @@ const router = useRouter();
       <Text style={styles.subtitle}>
         Capture your thoughts anytime, anywhere.
       </Text>
-      <TouchableOpacity>
+
+      <TouchableOpacity
         style={styles.button}
         onPress={() => router.push("/notes")}
+      >
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
     </View>
