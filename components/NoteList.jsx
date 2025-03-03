@@ -1,7 +1,7 @@
 import { View, FlatList } from "react-native";
 import NoteItem from "./NoteItem";
 
-const NoteList = (notes) => {
+const NoteList = ({ notes }) => {
   return (
     <View>
       <FlatList
