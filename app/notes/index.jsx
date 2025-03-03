@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { View, FlatList, Text, StyleSheet } from "react-native";
+import {
+  View,
+  FlatList,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Modal,
+  TextInput
+} from "react-native";
 
 const NoteScreen = () => {
   const [notes, setNotes] = useState([
@@ -8,6 +16,9 @@ const NoteScreen = () => {
     { id: "3", text: "Note three" },
     { id: "4", text: "Note four" },
   ]);
+
+  const [modalVisable, setModalVisible] = useState(false);
+  const [newNote, setNewNote] = useState('false');
 
   return (
     <View style={styles.container}>
@@ -20,6 +31,9 @@ const NoteScreen = () => {
           </View>
         )}
       />
+      <TouchableOpacity style={styles.addButton}>
+        <Text style={styles.addButtonText}>+ Add Note</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -40,6 +54,21 @@ const styles = StyleSheet.create({
   },
   noteText: {
     fontSize: 18,
+  },
+  addButton: {
+    position: "absolute",
+    bottom: 20,
+    left: 20,
+    right: 20,
+    backgroundColor: "#007bff",
+    padding: 15,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  addButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 
