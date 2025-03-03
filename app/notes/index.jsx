@@ -17,8 +17,21 @@ const NoteScreen = () => {
     { id: "4", text: "Note four" },
   ]);
 
+  // Add new note
+  const addNote = () => {
+    if (newNote.trim === "") return;
+
+    setNotes((prevNotes)=> [
+      ...prevNotes,
+      {id: Date.now.toString(), text: newNote}
+    ]);
+
+    setNewNote('');
+    setModalVisible(false);
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
-  const [newNote, setNewNote] = useState("false");
+  const [newNote, setNewNote] = useState("");
 
   return (
     <View style={styles.container}>
@@ -62,7 +75,7 @@ const NoteScreen = () => {
                   <Text style={styles.cancelButtonText}>Cancel</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.saveButton}>
+                <TouchableOpacity style={styles.saveButton} onPress={addNote}>
                   <Text style={styles.saveButtonText}>Save</Text>
                 </TouchableOpacity>
               </View>
