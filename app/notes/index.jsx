@@ -8,6 +8,7 @@ import {
   TextInput,
 } from "react-native";
 import NoteList from "../../components/NoteList";
+import AddNoteModal from "../../components/AddNoteModal";
 
 const NoteScreen = () => {
   const [notes, setNotes] = useState([
@@ -43,7 +44,13 @@ const NoteScreen = () => {
       >
         <Text style={styles.addButtonText}>+ Add Note</Text>
 
-       
+       <AddNoteModal 
+       modalVisible={modalVisible}
+       setModalVisible={setModalVisible}
+       newNote={newNote}
+       setNewNote={setNewNote}
+       addNote={addNote}
+       />
       </TouchableOpacity>
     </View>
   );

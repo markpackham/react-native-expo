@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 const AddNoteModal = () => {
-  modalVisible, setModalVisible, newNote, setNewNote, addNote;
+    modalVisible, setModalVisible, newNote, setNewNote, addNote;
   return (
     <Modal
       visible={modalVisible}
