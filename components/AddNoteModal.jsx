@@ -7,8 +7,13 @@ import {
   TextInput,
 } from "react-native";
 
-const AddNoteModal = () => {
-    modalVisible, setModalVisible, newNote, setNewNote, addNote;
+const AddNoteModal = ({
+  modalVisible,
+  setModalVisible,
+  newNote,
+  setNewNote,
+  addNote,
+}) => {
   return (
     <Modal
       visible={modalVisible}
