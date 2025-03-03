@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Modal,
-  TextInput
+  TextInput,
 } from "react-native";
 
 const NoteScreen = () => {
@@ -17,8 +17,8 @@ const NoteScreen = () => {
     { id: "4", text: "Note four" },
   ]);
 
-  const [modalVisable, setModalVisible] = useState(false);
-  const [newNote, setNewNote] = useState('false');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [newNote, setNewNote] = useState("false");
 
   return (
     <View style={styles.container}>
@@ -31,8 +31,32 @@ const NoteScreen = () => {
           </View>
         )}
       />
-      <TouchableOpacity style={styles.addButton}>
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => setModalVisible(true)}
+      >
         <Text style={styles.addButtonText}>+ Add Note</Text>
+
+        {/* Modal */}
+        <Modal
+          visible={modalVisible}
+          animationType="slide"
+          transparent
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>Add a new note</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter note..."
+                placeholderTextColor="#aaa"
+                value={newNote}
+                onChangeText={setNewNote}
+              />
+            </View>
+          </View>
+        </Modal>
       </TouchableOpacity>
     </View>
   );
