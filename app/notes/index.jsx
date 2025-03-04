@@ -39,13 +39,16 @@ const NoteScreen = () => {
   };
 
   // Add new note
-  const addNote = () => {
+  const addNote = async () => {
     if (newNote.trim === "") return;
 
-    setNotes((prevNotes) => [
-      ...prevNotes,
-      { id: Date.now.toString(), text: newNote },
-    ]);
+    const response = await noteService.addNote(newNote);
+
+    if (response.error) {
+      Alert.alert("Error", response.error);
+    } else {
+      setNotes([...notes, response.data]);
+    }
 
     setNewNote("");
     setModalVisible(false);
