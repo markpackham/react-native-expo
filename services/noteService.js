@@ -1,5 +1,5 @@
-import databaseService from "./databaseService";
-import { ID } from "react-native-appwrite";
+import databaseService from './databaseService';
+import { ID, Query } from 'react-native-appwrite';
 
 // Appwrite database & collection id
 const dbId = process.env.EXPO_PUBLIC_APPWRITE_DB_ID;
