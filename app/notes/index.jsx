@@ -7,6 +7,7 @@ import {
   Modal,
   TextInput,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import NoteList from "@/components/NoteList";
 import AddNoteModal from "@/components/AddNoteModal";
@@ -56,7 +57,10 @@ const NoteScreen = () => {
 
   return (
     <View style={styles.container}>
+      {loading ? (<ActivityIndicator size='large' color='#007bff' />) : (<>
+      {error && <Text style={styles.errorText}>{error}</Text>}
       <NoteList notes={notes} />
+      </>)}
 
       <TouchableOpacity
         style={styles.addButton}
