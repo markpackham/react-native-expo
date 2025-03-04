@@ -1,5 +1,7 @@
 import { database } from "./appwrite";
 
+// Will handle reusable CRUD functionality
+
 const databaseService = {
   // List documents taking in databse id and colleciton id (a NoSQL version of a table)
   async listDocuments(dbId, colId) {
