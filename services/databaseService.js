@@ -15,6 +15,18 @@ const databaseService = {
       return { error: error.message };
     }
   },
+
+  // Create document
+  async createDocument(dbId, colId, data, id = null) {
+    try {
+      return await database.createDocument(dbId, colId, id || undefined, data);
+    } catch (error) {
+      console.error("Error creating document", message);
+      return {
+        error: error.message,
+      };
+    }
+  },
 };
 
 export default databaseService;
