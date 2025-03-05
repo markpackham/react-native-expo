@@ -29,14 +29,12 @@ const databaseService = {
   },
 
   // Delete document
-  async deleteDocument(dbId, colID, id) {
+  async deleteDocument(dbId, colId, id) {
     try {
-      await database.deleteDocument(dbId, colID, id);
-      return {
-        success: true,
-      };
+      await database.deleteDocument(dbId, colId, id);
+      return { success: true };
     } catch (error) {
-      console.error("Error deleting document", message);
+      console.error("Error deleting document", error.message);
       return {
         error: error.message,
       };
