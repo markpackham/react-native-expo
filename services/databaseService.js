@@ -28,6 +28,11 @@ const databaseService = {
     }
   },
 
+  // Update document
+  async updateDocument(){
+
+  },
+
   // Delete document
   async deleteDocument(dbId, colId, id) {
     try {

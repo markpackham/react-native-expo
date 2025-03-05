@@ -13,6 +13,8 @@ import NoteList from "@/components/NoteList";
 import AddNoteModal from "@/components/AddNoteModal";
 import noteService from "@/services/noteService";
 
+// Current bug in React Native Alert module stopping it from running even on vanilla installs when using in different browsers
+
 const NoteScreen = () => {
   const [notes, setNotes] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
