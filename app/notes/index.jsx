@@ -14,6 +14,8 @@ import AddNoteModal from "@/components/AddNoteModal";
 import noteService from "@/services/noteService";
 
 // Current bug in React Native Alert module stopping it from running even on vanilla installs when using in different browsers
+// Alert does work on Android emulator so it looks like a browser issue
+// Failed to work on Browsers - Brave, Edge & LibreWolf
 
 const NoteScreen = () => {
   const [notes, setNotes] = useState([]);
