@@ -7,10 +7,16 @@ import {
   TextInput,
 } from "react-native";
 
-const NoteItem = ({ note, onDelete }) => {
+const NoteItem = ({ note, onDelete, onEdit }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(note.text);
   const inputRef = useRef(null);
+
+  const handleSave = () =>{
+    if(editedText.trim() ==='') return;
+    onEdit(note.$id, editedText)
+    setIsEditing(false)
+  }
 
   return (
     <View style={styles.noteItem}>
