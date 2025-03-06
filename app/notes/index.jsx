@@ -71,8 +71,12 @@ const NoteScreen = () => {
 
   // Edit note
   const editNote = async (id, newText) => {
-    const response = await noteService.updateNote(id, newText);
+    if (!newText.trim()) {
+      Alert.alert("Error", "Note text cannot be empty");
+      return;
+    }
 
+    const response = await noteService.updateNote(id, newText);
     if (response.error) {
       Alert.alert("Error", response.error);
     } else {
