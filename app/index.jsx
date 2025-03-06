@@ -12,6 +12,9 @@ const HomeScreen = () => {
       <Text style={styles.subtitle}>
         Capture your thoughts anytime, anywhere.
       </Text>
+      <Text style={styles.subtitle}>
+        Just be sure to login first!
+      </Text>
 
       <TouchableOpacity
         style={styles.button}
