@@ -23,7 +23,7 @@ const NoteItem = ({ note, onDelete, onEdit }) => {
       {isEditing ? (
         <TextInput
           ref={inputRef}
-          style={styles.edit}
+          style={styles.input}
           value={editedText}
           onChangeText={setEditedText}
           autoFocus
