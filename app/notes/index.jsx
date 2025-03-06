@@ -70,9 +70,19 @@ const NoteScreen = () => {
   };
 
   // Edit note
-  const editNote = async() =>{
-    return;
-  }
+  const editNote = async (id, newText) => {
+    const response = await noteService.updateNote(id, newText);
+
+    if (response.error) {
+      Alert.alert("Error", response.error);
+    } else {
+      setNotes((prevNotes) =>
+        prevNotes.map((note) =>
+          note.$id === id ? { ...note, text: response.data.text } : note
+        )
+      );
+    }
+  };
 
   return (
     <View style={styles.container}>
