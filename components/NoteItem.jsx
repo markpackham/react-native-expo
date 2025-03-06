@@ -12,18 +12,18 @@ const NoteItem = ({ note, onDelete, onEdit }) => {
   const [editedText, setEditedText] = useState(note.text);
   const inputRef = useRef(null);
 
-  const handleSave = () =>{
-    if(editedText.trim() ==='') return;
-    onEdit(note.$id, editedText)
-    setIsEditing(false)
-  }
+  const handleSave = () => {
+    if (editedText.trim() === "") return;
+    onEdit(note.$id, editedText);
+    setIsEditing(false);
+  };
 
   return (
     <View style={styles.noteItem}>
       {isEditing ? (
         <TextInput
-          ref={input}
-          style={styles.input}
+          ref={inputRef}
+          style={styles.edit}
           value={editedText}
           onChangeText={setEditedText}
           autoFocus
@@ -35,16 +35,21 @@ const NoteItem = ({ note, onDelete, onEdit }) => {
       )}
       <View style={styles.actions}>
         {isEditing ? (
-          <TouchableOpacity onPress={()=> {handleSave(); inputRef.current?.blur()}}>
-            <Text styles={styles.edit}>SAVE</Text>
+          <TouchableOpacity
+            onPress={() => {
+              handleSave();
+              inputRef.current?.blur();
+            }}
+          >
+            <Text style={styles.edit}>💾</Text>
           </TouchableOpacity>
         ) : (
           <TouchableOpacity onPress={() => setIsEditing(true)}>
-          <Text style={styles.edit}>EDIT</Text>
-        </TouchableOpacity>
+            <Text style={styles.edit}>✏️</Text>
+          </TouchableOpacity>
         )}
         <TouchableOpacity onPress={() => onDelete(note.$id)}>
-          <Text style={styles.delete}>DELETE</Text>
+          <Text style={styles.delete}>❌</Text>
         </TouchableOpacity>
       </View>
     </View>

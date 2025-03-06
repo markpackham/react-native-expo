@@ -71,7 +71,7 @@ const NoteScreen = () => {
 
   // Edit note
   const editNote = async() =>{
-    
+    return;
   }
 
   return (
