@@ -29,8 +29,15 @@ const databaseService = {
   },
 
   // Update document
-  async updateDocument(){
-
+  async updateDocument(dbId, colId, id, data){
+    try {
+      return await database.updateDocument(dbId, colId, id, data);
+    } catch (error) {
+      console.error("Error updating document", message);
+      return {
+        error: error.message,
+      };
+    }
   },
 
   // Delete document
