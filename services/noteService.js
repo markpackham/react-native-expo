@@ -43,9 +43,21 @@ optional chaining (?.) operator accesses an object's property or calls a functio
     return { data: response };
   },
 
+  // Update note
+  async updateNote(id, text) {
+    const response = await databaseService.updateDocument(dbId, colId, id, {text});
+
+    if (response?.error) {
+      return { error: response.error };
+    }
+
+    return { success: true };
+  },
+
   // Delete note
   async deleteNote(id) {
     const response = await databaseService.deleteDocument(dbId, colId, id);
+    
     if (response?.error) {
       return { error: response.error };
     }
