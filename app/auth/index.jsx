@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { TextInput } from "react-native-web";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +12,38 @@ const AuthScreen = () => {
     <View style={styles.container}>
       <Text style={styles.header}>{isRegistering ? "Sign Up" : "Login"}</Text>
       {error ? <Text style={styles.error}></Text> : null}
-      <TextInput />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        placeholderTextColor="#aaa"
+        value={email}
+        onChangeText={setEmail}
+        autoCapitalize="none"
+        // Keyboard will have @ & .com format so ready for email
+        keyboardType="email-address"
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        placeholderTextColor="#aaa"
+        value={password}
+        onChangeText={setPassword}
+        // Hide password when secureTextEntry true
+        secureTextEntry
+      />
+
+      {/* Only show if user is registering */}
+      {isRegistering && (
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          placeholderTextColor="#aaa"
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+          secureTextEntry
+        />
+      )}
     </View>
   );
 };
