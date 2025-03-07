@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const AuthScreen = () => {
-  return <View style={styles.container}>Auth</View>;
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [isRegistering, setIsRegistering] = useState(false)
+  const [error, setError] = useState(false)
+
+
+  return <View style={styles.container}>
+
+  </View>;
 };
 
 const styles = StyleSheet.create({
