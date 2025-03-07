@@ -34,7 +34,7 @@ const authService = {
     try {
       return await account.get();
     } catch (error) {
-      console.error("Error getting user", message);
+      console.error("Error getting user");
       return {
         error: error.message || "Failed to get user, please try again.",
       };
@@ -47,7 +47,7 @@ const authService = {
         // Removes current user session
         await account.deleteSession('current')
     } catch (error) {
-        console.error("Error logging user out", message);
+        console.error("Error logging user out");
         return {
           error: error.message || "Failed to logout user, please try again.",
         };
