@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { TextInput } from "react-native-web";
 
 const AuthScreen = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [isRegistering, setIsRegistering] = useState(false)
-  const [error, setError] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [error, setError] = useState(false);
 
-
-  return <View style={styles.container}>
-
-  </View>;
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>{isRegistering ? "Sign Up" : "Login"}</Text>
+      {error ? <Text style={styles.error}></Text> : null}
+      <TextInput />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
