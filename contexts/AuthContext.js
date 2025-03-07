@@ -46,4 +46,21 @@ export const AuthProvider = ({ children }) => {
     // Log user in right after registering
     return login(email, password);
   };
+
+  const logout = async () => {
+    await authService.logout();
+    setUser(null);
+    await checkUser();
+  };
+
+  return (
+    // Use React's Context API to share the functionality all over the app
+    <AuthContext.Provider value={{user, login, register, logout, loading}}>
+        {children}
+    </AuthContext.Provider>
+  )
 };
+
+// All our components will be able to access things like "login" or "user" via useAuth()
+// eg const {login} = useAuth();
+export const useAuth = () => useContext(AuthContext);
