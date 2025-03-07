@@ -24,4 +24,26 @@ export const AuthProvider = ({ children }) => {
 
     setLoading(false);
   };
+
+  const login = async (email, password) => {
+    const response = await authService.login(email, password);
+
+    if (response?.error) {
+      return response;
+    }
+
+    await checkUser();
+    return { success: true };
+  };
+
+  const register = async (email, password) => {
+    const response = await authService.register(email, password);
+
+    if (response?.error) {
+      return response;
+    }
+
+    // Log user in right after registering
+    return login(email, password);
+  };
 };
