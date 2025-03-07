@@ -1,5 +1,13 @@
+import { useRouter } from "expo-router";
 import { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { useAuth } from "@/contexts/AuthContext";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
@@ -44,6 +52,20 @@ const AuthScreen = () => {
           secureTextEntry
         />
       )}
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>
+          {isRegistering ? "Sign Up" : "Login"}
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => setIsRegistering(!isRegistering)}>
+        <Text style={styles.switchText}>
+          {isRegistering
+            ? "Already have an account? Login"
+            : "Don't have an account? Sign up"}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
