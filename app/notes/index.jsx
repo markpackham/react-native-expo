@@ -18,9 +18,9 @@ import noteService from "@/services/noteService";
 // Failed to work on Browsers - Brave, Edge & LibreWolf
 
 const NoteScreen = () => {
-  const router = useRouter()
+  const router = useRouter();
   // Overload the local loading state with the one dedicated to authentication
-  const {user, loading:authLoading} = useAuth()
+  const { user, loading: authLoading } = useAuth();
 
   const [notes, setNotes] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -31,14 +31,17 @@ const NoteScreen = () => {
   // Only runs if the user changes or if the authentication is loading
   useEffect(() => {
     // If not loading & no user then redirect to authentication section
-    if(!authLoading && !user){
-      router.replace('/auth')
+    if (!authLoading && !user) {
+      router.replace("/auth");
     }
   }, [user, authLoading]);
 
+  // Only fetch notes if we have a logged in user
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    if (user) {
+      fetchNotes();
+    }
+  }, [user]);
 
   const fetchNotes = async () => {
     setLoading(true);
