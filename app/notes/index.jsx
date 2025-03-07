@@ -7,6 +7,8 @@ import {
   Alert,
   ActivityIndicator,
 } from "react-native";
+import { useRouter } from "expo-router";
+import { useAuth } from "@/contexts/AuthContext";
 import NoteList from "@/components/NoteList";
 import AddNoteModal from "@/components/AddNoteModal";
 import noteService from "@/services/noteService";
@@ -16,11 +18,23 @@ import noteService from "@/services/noteService";
 // Failed to work on Browsers - Brave, Edge & LibreWolf
 
 const NoteScreen = () => {
+  const router = useRouter()
+  // Overload the local loading state with the one dedicated to authentication
+  const {user, loading:authLoading} = useAuth()
+
   const [notes, setNotes] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [newNote, setNewNote] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Only runs if the user changes or if the authentication is loading
+  useEffect(() => {
+    // If not loading & no user then redirect to authentication section
+    if(!authLoading && !user){
+      router.replace('/auth')
+    }
+  }, [user, authLoading]);
 
   useEffect(() => {
     fetchNotes();
