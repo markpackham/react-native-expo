@@ -69,6 +69,7 @@ const AuthScreen = () => {
         onChangeText={setPassword}
         // Hide password when secureTextEntry true
         secureTextEntry
+        textContentType="none"
       />
 
       {/* Only show if user is registering */}
@@ -80,10 +81,11 @@ const AuthScreen = () => {
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
+          textContentType="none"
         />
       )}
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleAuth}>
         <Text style={styles.buttonText}>
           {isRegistering ? "Sign Up" : "Login"}
         </Text>
