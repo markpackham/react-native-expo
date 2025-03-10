@@ -17,18 +17,15 @@ const noteService = {
     }
 
     try {
-      const response = await databaseService.listDocuments(
-        dbId,
-        colId,
-        Query.equal("user_id", userId)
-      );
+      const response = await databaseService.listDocuments(dbId, colId, [
+        Query.equal("user_id", userId),
+      ]);
       return response;
     } catch (error) {
       console.log("Error fetching notes:", error.message);
       return { data: [], error: error.message };
     }
   },
-
   // Add new note
   async addNote(user_id, text) {
     if (!text) {
