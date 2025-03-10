@@ -6,23 +6,27 @@ const dbId = process.env.EXPO_PUBLIC_APPWRITE_DB_ID;
 const colId = process.env.EXPO_PUBLIC_APPWRITE_COL_NOTES_ID;
 
 const noteService = {
-
   // Get notes
   async getNotes(userId) {
-
-    if(!userId){
-      console.error('Error: Missing userId in getNotes')
+    if (!userId) {
+      console.error("Error: Missing userId in getNotes");
       return {
-        data: [], error: 'User ID is missing'
-      }
-    }  
-
-    const response = await databaseService.listDocuments(dbId, colId);
-    if (response.error) {
-      return { error: response.error };
+        data: [],
+        error: "User ID is missing",
+      };
     }
 
-    return { data: response };
+    try {
+      const response = await databaseService.listDocuments(
+        dbId,
+        colId,
+        Query.equal("user_id", userId)
+      );
+      return response;
+    } catch (error) {
+      console.log("Error fetching notes:", error.message);
+      return { data: [], error: error.message };
+    }
   },
 
   // Add new note
@@ -34,7 +38,7 @@ const noteService = {
     const data = {
       text: text,
       createdAt: new Date().toISOString(),
-      user_id: user_id
+      user_id: user_id,
     };
     const response = await databaseService.createDocument(
       dbId,
@@ -65,7 +69,7 @@ optional chaining (?.) operator accesses an object's property or calls a functio
 
     return { data: response };
   },
-  
+
   // Delete note
   async deleteNote(id) {
     const response = await databaseService.deleteDocument(dbId, colId, id);
