@@ -1,26 +1,32 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import PostItImage from "@/assets/images/post-it.png";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEffect } from "react";
 
 const HomeScreen = () => {
-
-  const {user, loading} = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
-  
-  useEffect(()=>{
-    if(!loading && user){
-      router.replace('/notes')
-    }
-  }, [user, loading])
 
-  if(loading){
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/notes");
+    }
+  }, [user, loading]);
+
+  if (loading) {
     return (
       <View style={styles.centeredContainter}>
-        <ActivityIndicator size='large' color='#007bff' />
+        <ActivityIndicator size="large" color="#007bff" />
       </View>
-    )
+    );
   }
 
   return (
@@ -29,9 +35,6 @@ const HomeScreen = () => {
       <Text style={styles.title}>Welcome To Notes App</Text>
       <Text style={styles.subtitle}>
         Capture your thoughts anytime, anywhere.
-      </Text>
-      <Text style={styles.subtitle}>
-        Just be sure to login first!
       </Text>
 
       <TouchableOpacity
