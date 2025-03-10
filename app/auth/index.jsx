@@ -20,7 +20,7 @@ const AuthScreen = () => {
   const [error, setError] = useState(false);
 
   const handleAuth = async () => {
-    if (!email.trim() || password.trim()) {
+    if (!email.trim() || !password.trim()) {
       setError("Email & password required");
       return;
     }
