@@ -1,9 +1,11 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacit, ActivityIndicator } from "react-native";
 import PostItImage from "@/assets/images/post-it.png";
 import { useRouter } from "expo-router";
+import { useAuth } from "@/contexts/AuthContext";
 
 const HomeScreen = () => {
   const router = useRouter();
+  const something = useAuth();
 
   return (
     <View style={styles.container}>
