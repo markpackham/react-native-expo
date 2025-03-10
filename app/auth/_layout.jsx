@@ -1,13 +1,13 @@
-import { Stack } from "expo-router";
+import {Stack} from "expo-router";
 
 const AuthLayout = () => {
-  return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    />
-  );
+    return (
+        <Stack
+            screenOptions={{
+                headerShown: false,
+            }}
+        />
+    );
 };
 
 export default AuthLayout;
