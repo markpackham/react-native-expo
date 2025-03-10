@@ -9,7 +9,7 @@ const databaseService = {
       // .listDocuments part of SDK of database object
       // this differs from the async function above which we could call getDocuments if we liked
       const response = await database.listDocuments(dbId, colId, queries);
-      return {data: response.documents || [], error: null};
+      return { data: response.documents || [], error: null };
     } catch (error) {
       console.error("Error fetching documents", error.message);
       return { error: error.message };
@@ -29,11 +29,11 @@ const databaseService = {
   },
 
   // Update document
-  async updateDocument(dbId, colId, id, data){
+  async updateDocument(dbId, colId, id, data) {
     try {
       return await database.updateDocument(dbId, colId, id, data);
     } catch (error) {
-      console.error("Error updating document", message);
+      console.error("Error updating document", error.message);
       return {
         error: error.message,
       };
