@@ -6,12 +6,13 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useAuth } from "@/contexts/AuthContext";
 
 const AuthScreen = () => {
-
-  const {login, register} = useAuth();
+  const { login, register } = useAuth();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,24 +20,31 @@ const AuthScreen = () => {
   const [error, setError] = useState(false);
 
   const handleAuth = async () => {
-    if(!email.trim() || password.trim()){
-      setError('Email & password required')
+    if (!email.trim() || password.trim()) {
+      setError("Email & password required");
       return;
     }
 
-    if(isRegistering && password !== confirmPassword){
-      setError('Passwords do not match')
-      return
+    if (isRegistering && password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
     }
 
     let response;
 
-    if(isRegistering){
-      response = await register(email, password)
-    }else{
-      response = await login(email, password)
+    if (isRegistering) {
+      response = await register(email, password);
+    } else {
+      response = await login(email, password);
     }
-  }
+
+    if (response?.error) {
+      Alert.alert("Error", response.error);
+      return;
+    }
+
+    router.replace('/notes');
+  };
 
   return (
     <View style={styles.container}>
