@@ -1,12 +1,5 @@
-import {useState, useEffect} from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    Alert,
-    ActivityIndicator,
-} from "react-native";
+import {useEffect, useState} from "react";
+import {ActivityIndicator, Alert, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
 import {useRouter} from "expo-router";
 import {useAuth} from "@/contexts/AuthContext";
 import NoteList from "@/components/NoteList";

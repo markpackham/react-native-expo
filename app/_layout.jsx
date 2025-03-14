@@ -1,6 +1,6 @@
 import {Stack} from "expo-router";
 import {AuthProvider, useAuth} from "@/contexts/AuthContext";
-import {TouchableOpacity, Text, StyleSheet} from "react-native";
+import {StyleSheet, Text, TouchableOpacity} from "react-native";
 
 const HeaderLogout = () => {
     const {user, logout} = useAuth();

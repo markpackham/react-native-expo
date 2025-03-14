@@ -1,13 +1,6 @@
 import {useRouter} from "expo-router";
 import {useState} from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
-    Alert,
-} from "react-native";
+import {Alert, StyleSheet, Text, TextInput, TouchableOpacity, View,} from "react-native";
 import {useAuth} from "@/contexts/AuthContext";
 
 const AuthScreen = () => {

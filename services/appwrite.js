@@ -1,4 +1,4 @@
-import {Client, Databases, Account} from "react-native-appwrite";
+import {Account, Client, Databases} from "react-native-appwrite";
 import {Platform} from "react-native";
 
 const config = {

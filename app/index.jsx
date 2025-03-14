@@ -1,11 +1,4 @@
-import {
-    Text,
-    View,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-} from "react-native";
+import {ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
 import PostItImage from "@/assets/images/post-it.png";
 import {useRouter} from "expo-router";
 import {useAuth} from "@/contexts/AuthContext";
