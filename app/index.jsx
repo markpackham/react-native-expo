@@ -23,7 +23,7 @@ const HomeScreen = () => {
 
     if (loading) {
         return (
-            <View style={styles.centeredContainter}>
+            <View style={styles.centeredContainer}>
                 <ActivityIndicator size="large" color="#007bff"/>
             </View>
         );
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "bold",
     },
-    centeredContainter: {
+    centeredContainer: {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
